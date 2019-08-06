@@ -1,0 +1,50 @@
+@font-face {
+    font-family: "TwentyCentury";
+    src: url("../../css/fonts/20Cen.otf");
+    }
+
+body {
+    font-family: 'TwentyCentury';
+    align-items: center;
+    justify-items: center;
+}
+.image {
+    height: 42px;
+    width: 42px;
+}
+
+.container {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 60vw;
+  height: 70vh;
+  background-color: #efefef;
+  border-radius: 20px;
+  align-items: center;
+  box-shadow: 0px 11px 28px -5px rgba(0,0,0,0.50);
+}
+
+.header {
+    height: 10vh;
+    background-color: #1c1c1c;
+    border-radius: 20px 20px 0px 0px;
+    box-shadow: 0px 11px 28px -5px rgba(0,0,0,0.25);
+
+}
+
+.juulLogo {
+    position: absolute;
+    padding: 15px;
+    height: 50px;
+    left: 45%;
+}
+
+.juul {
+    height: 380px;
+    margin-top: 35px;
+    margin-left: 200px;
+}
