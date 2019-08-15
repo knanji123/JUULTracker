@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import './add.css';
 
@@ -14,6 +14,12 @@ import vanillaPod from '../img/vanillaPod.svg'
 import tobaccoPod from '../img/tobaccoPod.svg'
 
 
+// handleChange = (event) => {
+//   this.ListeningStateChangedEvent({
+//     [event.target.name]: event.target.value
+//   })
+// }
+
 function Add() {
   return (
     <div className="container">
@@ -26,6 +32,7 @@ function Add() {
 
       <div className="addNew">
 
+        <h1>NEW POD USAGE</h1>
         <div className="pods">
           <img src={mintPod} className="cap" />
           <img src={fruitPod} className="cap" />
@@ -42,10 +49,9 @@ function Add() {
         </div>
 
       </div>
-
-
-
     </div>
+
+    
   );
 }
 
