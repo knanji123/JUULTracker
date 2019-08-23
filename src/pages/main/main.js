@@ -4,7 +4,7 @@ import SimpleStorage from "react-simple-storage";
 
 import './main.css';
 import pods from "../data.js";
-
+import History from "../history.js"
 
 //Images
 import juulTracker from '../../img/JuulTracker.svg'
@@ -20,51 +20,44 @@ import tobaccoPod from '../../img/tobaccoPod.svg'
 
 const MainPage = ({ podHistory }) => {
 
+  // var temp = podHistory;
+  // console.log("info---->", { podHistory })
 
-  // var [ entryDate, setEntryDate ] = useState(null);
-
-  // entryDate = new Date();
-  // entryDate = podHistory.date.getDate();
-
-
-  var temp = podHistory;
-  console.log("info---->", { podHistory })
-
-  var dateLOL = { temp };
-  var testDate = new Date();
-  var entryDate = testDate.getDate();
-  console.log(entryDate);
-
-
+  // var dateLOL = { temp };
+  // var testDate = new Date();
+  // var entryDate = testDate.getDate();
+  // console.log(entryDate);
   return (
     
-
     <div className="container">
       <SimpleStorage parent={podHistory} />
 
 
       <div className="header">
-        <img src={juulTracker} className="juulLogo" />
+        <img src={juulTracker} className="juulLogo" alt="Juul Tracker"/>
       </div>
 
       <div className="contents pageFade">
-        <div className="left">
-          <img src={juul} className="juul" />
-        </div>
 
+        {/* Left Side */}
+        <div className="left">
+          <img src={juul} className="juul" alt="Juul"/>
+        </div>
+        {/* End of Left Side */}
+
+        {/* Right Side */}
         <div className="right">
           <h1>POD USAGE
 
           <Link to="/add">
-              <img src={add} className="add" />
+              <img src={add} className="add" alt="Add Button"/>
             </Link>
           </h1>
 
-
+          {/* History */}
           <div className="history">
 
             {/* <p>{ JSON.stringify(podHistory)}</p> */}
-
 
             {podHistory.map(podTracker => (
               <div className="track">
@@ -78,73 +71,17 @@ const MainPage = ({ podHistory }) => {
               </div>
             ))}
 
-
-            {/*        
-{podTracker.date.getMinutes() < 10 ? (
-  ":0"
-   ) : ":"} */}
-
-
-
-            <div className="track">
-              <img src={mintPod} className="juulCap" />
-              <p className="title">5% - MINT</p>
-              <p className="time">July 29th, 2019<br></br>8:00am</p>
-            </div>
-
-            <div className="track">
-              <img src={fruitPod} className="juulCap" />
-              <p className="title">5% - FRUIT</p>
-              <p className="time">July 29th, 2019<br></br>8:00am</p>
-            </div>
-
-            <div className="track">
-              <img src={mangoPod} className="juulCap" />
-              <p className="title">5% - MANGO</p>
-              <p className="time">July 29th, 2019<br></br>8:00am</p>
-            </div>
-
-            <div className="track">
-              <img src={vanillaPod} className="juulCap" />
-              <p className="title">5% - VANILLA</p>
-              <p className="time">July 29th, 2019<br></br>8:00am</p>
-            </div>
-
-            <div className="track">
-              <img src={vanillaPod} className="juulCap" />
-              <p className="title">5% - VANILLA</p>
-              <p className="time">July 29th, 2019<br></br>8:00am</p>
-            </div>
-
-            <div className="track">
-              <img src={vanillaPod} className="juulCap" />
-              <p className="title">5% - VANILLA</p>
-              <p className="time">July 29th, 2019<br></br>8:00am</p>
-            </div>
-
-            <div className="track">
-              <img src={vanillaPod} className="juulCap" />
-              <p className="title">5% - VANILLA</p>
-              <p className="time">July 29th, 2019<br></br>8:00am</p>
-            </div>
-
-            <div className="track">
-              <img src={vanillaPod} className="juulCap" />
-              <p className="title">5% - VANILLA</p>
-              <p className="time">July 29th, 2019<br></br>8:00am</p>
-            </div>
-
-            <div className="track">
-              <img src={vanillaPod} className="juulCap" />
-              <p className="title">5% - VANILLA</p>
-              <p className="time">July 29th, 2019<br></br>8:00am</p>
-            </div>
-
+            <History />
+            
+          {/* End of History */}
           </div>
-
+          
+        {/* End of Right Side */}
         </div>
+        
 
       </div>
+
     </div>
   );
 }

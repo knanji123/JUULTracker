@@ -1,21 +1,10 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import './add.css';
-import pods from "./data.js";
-
-import juulTracker from '../img/JuulTracker.svg'
-import juul from '../img/Juul.svg'
-
-
 import { tsPropertySignature } from '@babel/types';
+import "./add.css"
+import pods from "../data.js";
 
-
-// handleChange = (event) => {
-//   this.ListeningStateChangedEvent({
-//     [event.target.name]: event.target.value
-//   })
-// }
-
+import juulTracker from '../../img/JuulTracker.svg'
 
 function Add({ history, podHistory, setPodHistory }) {
 
@@ -30,8 +19,10 @@ function Add({ history, podHistory, setPodHistory }) {
       date: new Date()
     };
 
+    // Passes in new entry from submit to setPodHistory function and appends to podHistory
     setPodHistory([newEntry, ...podHistory]);
 
+    // Pushes site to the main page
     history.push("/")
   };
 
@@ -40,16 +31,16 @@ function Add({ history, podHistory, setPodHistory }) {
 
       <div className="header">
         <Link to="/">
-          <img src={juulTracker} className="juulLogo" />
+          <img src={juulTracker} className="juulLogo" alt="juulTracker"/>
         </Link>
       </div>
 
       <div className="addNew pageFade">
-
+        
         <h1>NEW POD USAGE</h1>
         <div className="pods">
           {pods.map(pod => (
-            <img src={pod.img} className="cap" onClick={() => setChosenPod(pod.name)} />
+            <img src={pod.img} className="cap" onClick={() => setChosenPod(pod.name)} alt="Juul Cap"/>
           ))}
         </div>
 
@@ -64,9 +55,9 @@ function Add({ history, podHistory, setPodHistory }) {
         <button className="submit" onClick={handleSubmit}>Submit</button>
 
       </div>
+
     </div>
 
-    
   );
 }
 
