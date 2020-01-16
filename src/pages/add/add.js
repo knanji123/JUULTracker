@@ -1,15 +1,14 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { tsPropertySignature } from '@babel/types';
-import "./add.css"
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { tsPropertySignature } from "@babel/types";
+import "./add.css";
 import pods from "../data.js";
 
-import juulTracker from '../../img/JuulTracker.svg'
+import juulTracker from "../../img/JuulTracker.svg";
 
 function Add({ history, podHistory, setPodHistory }) {
-
-  const [ chosenPod, setChosenPod ] = useState(null);
-  const [ chosenPercentage, setChosenPercentage ] = useState(null);
+  const [chosenPod, setChosenPod] = useState(null);
+  const [chosenPercentage, setChosenPercentage] = useState(null);
 
   // Handle submit button using `setPodHistory` (passed down from App.js)
   const handleSubmit = () => {
@@ -23,24 +22,27 @@ function Add({ history, podHistory, setPodHistory }) {
     setPodHistory([newEntry, ...podHistory]);
 
     // Pushes site to the main page
-    history.push("/")
+    history.push("/");
   };
 
   return (
     <div className="container">
-
       <div className="header">
         <Link to="/">
-          <img src={juulTracker} className="juulLogo" alt="juulTracker"/>
+          <img src={juulTracker} className="juulLogo" alt="juulTracker" />
         </Link>
       </div>
 
       <div className="addNew pageFade">
-        
         <h1>NEW POD USAGE</h1>
         <div className="pods">
           {pods.map(pod => (
-            <img src={pod.img} className="cap" onClick={() => setChosenPod(pod.name)} alt="Juul Cap"/>
+            <img
+              src={pod.img}
+              className="cap"
+              onClick={() => setChosenPod(pod.name)}
+              alt="Juul Cap"
+            />
           ))}
         </div>
 
@@ -50,14 +52,15 @@ function Add({ history, podHistory, setPodHistory }) {
           <button onClick={() => setChosenPercentage("5%")}>5%</button>
         </div>
 
-        <pre>{chosenPod} {chosenPercentage}</pre>
+        <pre>
+          {chosenPod} {chosenPercentage}
+        </pre>
 
-        <button className="submit" onClick={handleSubmit}>Submit</button>
-
+        <button className="submit" onClick={handleSubmit}>
+          Submit
+        </button>
       </div>
-
     </div>
-
   );
 }
 

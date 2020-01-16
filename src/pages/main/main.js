@@ -1,89 +1,78 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import SimpleStorage from "react-simple-storage";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-import './main.css';
+import "./main.css";
 import pods from "../data.js";
-import History from "../history.js"
+import History from "../history.js";
 
 //Images
-import juulTracker from '../../img/JuulTracker.svg'
-import juul from '../../img/Juul.svg'
-import add from '../../img/add.svg'
-import mintPod from '../../img/JuulCap.svg'
-import fruitPod from '../../img/fruitPod.svg'
-import mangoPod from '../../img/mangoPod.svg'
-import cucumberPod from '../../img/cucumberPod.svg'
-import vanillaPod from '../../img/vanillaPod.svg'
-import tobaccoPod from '../../img/tobaccoPod.svg'
-
+import juulTracker from "../../img/JuulTracker.svg";
+import juul from "../../img/Juul.svg";
+import add from "../../img/add.svg";
+import mintPod from "../../img/JuulCap.svg";
+import fruitPod from "../../img/fruitPod.svg";
+import mangoPod from "../../img/mangoPod.svg";
+import cucumberPod from "../../img/cucumberPod.svg";
+import vanillaPod from "../../img/vanillaPod.svg";
+import tobaccoPod from "../../img/tobaccoPod.svg";
 
 const MainPage = ({ podHistory }) => {
-
-  // var temp = podHistory;
-  // console.log("info---->", { podHistory })
-
-  // var dateLOL = { temp };
-  // var testDate = new Date();
-  // var entryDate = testDate.getDate();
-  // console.log(entryDate);
   return (
-    
     <div className="container">
-      <SimpleStorage parent={podHistory} />
-
-
       <div className="header">
-        <img src={juulTracker} className="juulLogo" alt="Juul Tracker"/>
+        <img src={juulTracker} className="juulLogo" alt="Juul Tracker" />
       </div>
 
       <div className="contents pageFade">
-
         {/* Left Side */}
         <div className="left">
-          <img src={juul} className="juul" alt="Juul"/>
+          <img src={juul} className="juul" alt="Juul" />
         </div>
         {/* End of Left Side */}
 
         {/* Right Side */}
         <div className="right">
-          <h1>POD USAGE
-
-          <Link to="/add">
-              <img src={add} className="add" alt="Add Button"/>
+          <h1>
+            POD USAGE
+            <Link to="/add">
+              <img src={add} className="add" alt="Add Button" />
             </Link>
           </h1>
 
           {/* History */}
           <div className="history">
-
             {/* <p>{ JSON.stringify(podHistory)}</p> */}
-
+  
             {podHistory.map(podTracker => (
               <div className="track">
                 {/* {pods.map(podColor =>(
                 <img src={podColor.img} className="juulCap" />
               ))} */}
+                <img src={podTracker.img} className="juulCap" />
                 <p className="title">{podTracker.percentage} -</p>
                 <p className="title">{podTracker.pod}</p>
-                <p className="time">{podTracker.date.toDateString()}<br></br>{podTracker.date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric'})}</p>
+                <p className="time">
+                  {podTracker.date.toDateString()}
+                  <br></br>
+                  {podTracker.date.toLocaleTimeString("en-US", {
+                    hour: "numeric",
+                    minute: "numeric"
+                  })}
+                </p>
                 {/* <p className="title">{podTracker.date}</p> */}
               </div>
             ))}
 
             <History />
-            
-          {/* End of History */}
+
+            {/* End of History */}
           </div>
-          
-        {/* End of Right Side */}
+
+          {/* End of Right Side */}
         </div>
-        
-
       </div>
-
     </div>
   );
-}
+};
 
 export default MainPage;
