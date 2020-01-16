@@ -14,7 +14,6 @@ import fruitPod from "../../img/fruitPod.svg";
 import mangoPod from "../../img/mangoPod.svg";
 import cucumberPod from "../../img/cucumberPod.svg";
 import vanillaPod from "../../img/vanillaPod.svg";
-import tobaccoPod from "../../img/tobaccoPod.svg";
 
 const MainPage = ({ podHistory }) => {
   return (
@@ -43,27 +42,27 @@ const MainPage = ({ podHistory }) => {
           <div className="history">
             {/* <p>{ JSON.stringify(podHistory)}</p> */}
   
-            {podHistory.map(podTracker => (
-              <div className="track">
-                {/* {pods.map(podColor =>(
-                <img src={podColor.img} className="juulCap" />
-              ))} */}
-                <img src={podTracker.img} className="juulCap" />
-                <p className="title">{podTracker.percentage} -</p>
-                <p className="title">{podTracker.pod}</p>
-                <p className="time">
-                  {podTracker.date.toDateString()}
-                  <br></br>
-                  {podTracker.date.toLocaleTimeString("en-US", {
-                    hour: "numeric",
-                    minute: "numeric"
-                  })}
-                </p>
-                {/* <p className="title">{podTracker.date}</p> */}
-              </div>
-            ))}
+            {podHistory.map(({ flavour, percentage, date}) => {
+              const podImage = pods.find(pod => pod.flavour === flavour);
 
-            <History />
+              return (
+                <div className="track">
+                  <img src={podImage.img} className="juulCap" />
+                  <p className="title">{percentage} -</p>
+                  <p className="title">{flavour}</p>
+                  <p className="time">
+                    {date.toDateString()}
+                    <br></br>
+                    {date.toLocaleTimeString("en-US", {
+                      hour: "numeric",
+                      minute: "numeric"
+                    })}
+                  </p>
+                </div>
+              )
+            })}
+
+            {/* <History /> */}
 
             {/* End of History */}
           </div>

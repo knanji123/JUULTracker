@@ -8,27 +8,27 @@ import tobaccoPod from '../img/tobaccoPod.svg'
 
 export default [
   {
-    name: "mint",
+    flavour: "mint",
     img: mintPod
   },
   {
-    name: "fruit",
+    flavour: "fruit",
     img: fruitPod
   },
   {
-    name: "mango",
+    flavour: "mango",
     img: mangoPod
   },
   {
-    name: "cucumber",
+    flavour: "cucumber",
     img: cucumberPod
   },
   {
-    name: "vanilla",
+    flavour: "vanilla",
     img: vanillaPod
   },
   {
-    name: "tobacco",
+    flavour: "tobacco",
     img: tobaccoPod
   }
 ];

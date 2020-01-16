@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { tsPropertySignature } from "@babel/types";
-import "./add.css";
 import pods from "../data.js";
+import "./add.css";
 
 import juulTracker from "../../img/JuulTracker.svg";
 
 function Add({ history, podHistory, setPodHistory }) {
-  const [chosenPod, setChosenPod] = useState(null);
+  const [chosenFlavour, setChosenFlavour] = useState(null);
   const [chosenPercentage, setChosenPercentage] = useState(null);
+  const isValid = chosenFlavour && chosenPercentage;
 
   // Handle submit button using `setPodHistory` (passed down from App.js)
   const handleSubmit = () => {
+    if(!isValid) return;
+
     const newEntry = {
-      pod: chosenPod,
+      flavour: chosenFlavour,
       percentage: chosenPercentage,
       date: new Date()
     };
@@ -39,8 +41,8 @@ function Add({ history, podHistory, setPodHistory }) {
           {pods.map(pod => (
             <img
               src={pod.img}
-              className="cap"
-              onClick={() => setChosenPod(pod.name)}
+              className={chosenFlavour === pod.flavour ? "cap chosen" : "cap"}
+              onClick={() => setChosenFlavour(pod.flavour)}
               alt="Juul Cap"
             />
           ))}
@@ -53,10 +55,14 @@ function Add({ history, podHistory, setPodHistory }) {
         </div>
 
         <pre>
-          {chosenPod} {chosenPercentage}
+          {chosenFlavour} {chosenPercentage}
         </pre>
 
-        <button className="submit" onClick={handleSubmit}>
+        <button
+          className="submit"
+          onClick={handleSubmit}
+          disabled={!isValid}
+        >
           Submit
         </button>
       </div>
